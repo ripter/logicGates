@@ -19,6 +19,11 @@ function runTape(tape) {
   }
 }
 
+function runTable(table) {
+  var state = {};
+}
+
 module.exports = {
   runTape: runTape
+  , runTable: runTable
 };

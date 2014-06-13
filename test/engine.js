@@ -6,10 +6,16 @@ var engine = require('../src/engine');
 
 
 it('Tape and 1,1', function() {
-  //attach(nand, input.switchOn());
   engine.runTape([
 	  input.switchOn
-		, input.switchOn
 		, input.assertOn
 	  ]);
+});
+
+it('Table and 1,1', function() {
+  engine.runTable([
+    //Function, args, result
+    [input.switchOn, null, 'a']
+    , [input.assertOn, 'a', null]
+  ]);
 });
