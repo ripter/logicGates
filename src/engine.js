@@ -26,6 +26,8 @@ function runTape(tape) {
 }
 
 //
+// acceptance:
+//   http://en.wikipedia.org/wiki/Sequential_logic
 // pros:
 //   funcs always get the expected value
 //   easier to trace connections
