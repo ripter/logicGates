@@ -5,4 +5,4 @@ all: build
 build:
 
 test: build
-	./node_modules/.bin/mocha -C
+	./node_modules/.bin/mocha -C 
