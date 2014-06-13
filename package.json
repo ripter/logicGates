@@ -1,0 +1,25 @@
+{
+  "name": "logicGates",
+  "version": "0.0.0",
+  "description": "logicGates ==========",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ripter/logicGates.git"
+  },
+  "author": "Chris Richards",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ripter/logicGates/issues"
+  },
+  "homepage": "https://github.com/ripter/logicGates",
+  "dependencies": {
+    "mocha": "^1.20.1",
+    "should": "^4.0.4"
+  }
+}
