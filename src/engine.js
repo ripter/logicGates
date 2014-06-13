@@ -1,5 +1,11 @@
 /*global module */
 
+//
+// pros:
+//   tape doesn't need to keep track of variables
+// cons:
+//   funcs have to manage the stack
+//
 function runTape(tape) {
   var stack = [];
   var i, x;
@@ -19,6 +25,12 @@ function runTape(tape) {
   }
 }
 
+//
+// pros:
+//   funcs always get the expected value
+// con:
+//   table needs to keep track of variables
+//
 function runTable(table) {
   var state = {};
 }
