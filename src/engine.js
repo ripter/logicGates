@@ -28,7 +28,8 @@ function runTape(tape) {
 //
 // pros:
 //   funcs always get the expected value
-// con:
+//   easier to trace connections
+// cons:
 //   table needs to keep track of variables
 //
 function runTable(table) {
