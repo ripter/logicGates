@@ -18,33 +18,3 @@ it('assertOn', function() {
 it('assertOff', function() {
   input.assertOff(0);
 });
-
-// TEMP
-it('and 1,1', function() {
-  //attach(nand, input.switchOn());
-  run([
-	  input.switchOn
-		, input.switchOn
-		, input.assertOn
-	  ]);
-});
-
-function run(tape) {
-  var stack = [];
-  var i, x;
-
-  for(i = 0; i < tape.length; i++) {
-    var func = tape[i];
-    var params = [];
-    var result;
-
-    // I'm pretty sure I could slice or something there
-    for (x=0; i < func.length; i++) {
-      params.push(stack.pop());
-    }
-
-		result = func.apply(func, params);
-    stack.push(result);
-  }
-}
-// END TEMP
