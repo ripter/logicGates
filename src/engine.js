@@ -1,44 +1,29 @@
 /*global module */
 
-//
-// pros:
-//   tape doesn't need to keep track of variables
-// cons:
-//   funcs have to manage the stack
-//
-function runTape(tape) {
-  var stack = [];
-  var i, x;
-
-  for(i = 0; i < tape.length; i++) {
-    var func = tape[i];
-    var params = [];
-    var result;
-
-    // I'm pretty sure I could slice or something there
-    for (x=0; i < func.length; i++) {
-      params.push(stack.pop());
-    }
-
-		result = func.apply(func, params);
-    stack.push(result);
-  }
-}
-
+var MAX_PASS = 10;
 //
 // acceptance:
 //   http://en.wikipedia.org/wiki/Sequential_logic
-// pros:
-//   funcs always get the expected value
-//   easier to trace connections
-// cons:
-//   table needs to keep track of variables
 //
-function runTable(table, state) {
+function runTable(table, state, pass) {
+  var hash = JSON.stringify(state);
+
+  // if we don't have pass, make it MAX_PASS
+  pass = typeof pass === 'undefined' ? MAX_PASS : pass;
+
+  // Run all the rows over state
   table.forEach(function(row) {
     state = runInstruction(state, row);
   });
 
+  // If state has changed, we are not stable
+  // Keep running until either we run our of passes
+	// or we reach a stable signal
+  if (pass > 0 && JSON.stringify(state) != hash) {
+    return runTable(table, state, --pass);
+  }
+
+  // return state
   return state;
 }
 
@@ -51,9 +36,12 @@ function runInstruction(state, row) {
 
   // for each input, add it to the params array
   input.forEach(function(key) {
-    params.push(state[key]);
+    // If it doesn't exist yet, it's 0
+    var val = state[key] || 0;
+    params.push(val);
   });
 
+  // call the func with the state params
   result = func.apply(null, params);
 
   // for each output, change the value in state
@@ -65,6 +53,5 @@ function runInstruction(state, row) {
 }
 
 module.exports = {
-  runTape: runTape
-  , runTable: runTable
+  runTable: runTable
 };

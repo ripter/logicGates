@@ -31,3 +31,21 @@ describe('AND', function() {
     state.c.should.equal(0);
   });
 });
+
+describe('RS NAND', function() {
+  var table = [
+    [nand, 's,j', 'q']
+    , [nand, 'r,q', 'j']
+  ];
+  var run = engine.runTable.bind(null, table);
+
+  it('0,1', function() {
+    var state = run({s: 0, r: 1});
+    state.q.should.equal(1);
+  });
+
+  it('1,0', function() {
+    var state = run({s: 1, r: 0});
+    state.q.should.equal(0);
+  });
+});
