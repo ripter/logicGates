@@ -32,7 +32,7 @@ describe('AND', function() {
   });
 });
 
-describe('RS NAND', function() {
+describe('RS NAND latch', function() {
   var table = [
     [nand, 's,j', 'q']
     , [nand, 'r,q', 'j']
