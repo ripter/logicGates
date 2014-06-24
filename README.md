@@ -28,7 +28,6 @@ The goal a logic gate simulator that can be used for things like games.
     assert(result.q, 1);
     // check out /test for more examples
 
-## table structure
 Each row is made up of three parts:
 
     [gateFunction, inputs, outputs]

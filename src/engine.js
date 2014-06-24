@@ -1,4 +1,5 @@
 /*global module */
+'use strict';
 
 var MAX_PASS = 10;
 //
@@ -19,7 +20,7 @@ function runTable(table, state, pass) {
   // If state has changed, we are not stable
   // Keep running until either we run our of passes
 	// or we reach a stable signal
-  if (pass > 0 && JSON.stringify(state) != hash) {
+  if (pass > 0 && JSON.stringify(state) !== hash) {
     return runTable(table, state, --pass);
   }
 

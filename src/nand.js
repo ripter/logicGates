@@ -1,4 +1,6 @@
-/*global exports, module */
+/*global module */
+'use strict';
+
 //
 // A NAND Gate
 // http://en.wikipedia.org/wiki/NAND_logic
